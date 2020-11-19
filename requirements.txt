@@ -24,7 +24,7 @@ jieba3k==0.35.1
 joblib==0.17.0
 lxml==4.6.1
 Markdown==3.2.2
-mysqlclient @ file:///C:/Users/HP/Downloads/mysqlclient-1.4.6-cp38-cp38-win_amd64.whl
+mysqlclient==2.0.1
 newspaper3k==0.2.8
 nltk==3.5
 pefile==2019.4.18
