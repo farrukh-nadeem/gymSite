@@ -1,0 +1,117 @@
+{% extends "members/layout.html" %}
+{% load static %}
+{% if heading %}
+    {% block title %}Search Services{% endblock %}
+{% endif %}
+{% block body %}
+    <div><h2 style="margin-left: 40%;">Booking Filters</h2></div>
+    <hr>
+    <div id="filters_view" style="margin-left: 5%; font-size: 20px;">
+    	<div >
+			<div>
+			<label for="service_type">Services Types:</label>
+			<select class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="service_type">
+				<option value="all">All</option>
+				{% for type in service_types %}
+			  		<option value="{{type.id}}">{{type.service_name}}</option>
+				{% endfor %}
+			</select>
+			&nbsp;
+			<label for="service_where">Online or Offline:</label>
+			<select class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="service_where">
+			  <option value="both">Both</option>
+			  <option value="online">Online</option>
+			  <option value="offline">Offline</option>
+			</select>
+			&nbsp;
+			<label for="days">Days:</label>
+			<select class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="days">
+				<option value="all">All</option>
+				{% for service in services %}
+					{% if not service.days %}
+					{% else %}
+			  			<option value="{{service.days}}">{{service.days}}</option>
+			  		{% endif %}
+				{% endfor %}
+			</select>
+			&nbsp;
+			<label for="timing">Timing:</label>
+			<select class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="timing">
+				<option value="all">All</option>
+				{% for service in services %}
+					{% if not service.timings %}
+					{% else %}
+						<option value="{{service.timings}}">{{service.timings}}</option>
+					{% endif %}
+			  		
+				{% endfor %}
+			</select>
+			&nbsp;
+			<label for="exercise">Exercise:</label>
+			<select class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="exercise">
+				<option value="all">All</option>
+				{% for exercise in exercises %}
+					{% if not exercise.exercise_name %}
+					{% else %}
+						<option value="{{exercise.id}}">{{exercise.exercise_name}}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+		</div>
+		<br>
+		<div  class="slidecontainer">
+			<label for="myRange">Price Range:</label>
+			&nbsp;
+	  		{{min_price}}Rs <input type="range" min="{{min_price}}" max="{{max_price}}" value="{{max_price}}" class="slider" id="myRange"> <span id="demo"></span>Rs
+	  		<!--<label for="maxRange">Max:</label>
+	  		0<input type="range" min="0" max="{{max_price}}" value="{{max_price}}" class="slider" id="maxRange">{{max_price}}-->
+		</div>
+		<div style="margin-left: 40%;">
+			<button id="search_services">Search</button>
+		</div>
+	</div>
+	<div id="all_services_view">
+	<hr>
+    	<h2 style="text-align: center;">Available Services</h2>
+    <hr>
+		<div class="container">
+			<div style="width:100%; height: 200px;">
+			{% for service in services %}
+				<div class="inside">
+				   <div class="card" style="width: 18rem; margin: 20px;">
+				     <div class="card-body">
+				       <h3 class="card-title">{{service.excercise_field.exercise_name}}</h3>
+				       <h5 class="card-title">{{service.type_field.service_name}}</h5>
+				       <h6 class="card-subtitle mb-2 text-muted">By {{service.service_provider_field.fullname}}</h6>
+				       <p class="card-text"> 
+				       	{% if service.is_online %}
+				       		<b>Mode: </b> Online <br>
+				       {% elif service.is_online == False %}
+				       		<b>Mode: </b> On Site <br>
+				       	{% endif %}
+				       <b> Price: </b>{{service.charges}} </p>
+				       <a href="{% url 'confirm_booking' service.id %}" class="link">
+				       		<button class="book_details">Get Access</button>
+				       </a>
+				     </div>
+				   </div>
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+	<div id="service_heading" style="display: none;">
+		<hr>
+	    	<div><h2 style="text-align: center;">Selected Services</h2></div>
+	    <hr>
+	</div>
+    <div class="container">
+    	<div id="selected_service_view" style="width:100%; height: 200px;">
+    		
+    	</div>
+    	
+    </div>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'members/booking.js' %}"></script>
+{% endblock %}

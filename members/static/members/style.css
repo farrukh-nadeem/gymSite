@@ -1,0 +1,295 @@
+
+*{
+padding: 0;
+margin: 0;
+text-decoration: none;
+list-style:none;
+box-sizing: border-box;
+
+
+}
+
+body{
+ font-size: 18px;
+ font-family: montserrat;
+}
+
+nav{
+
+background: #0082e6;
+height: 100px;
+width: 100%;
+padding-top: 20px;
+}
+
+label.logo{
+
+color: white;
+font-size: 20px;
+line-height: 50px;
+width: 200px;
+padding:0 30px;
+padding-top: 20px;
+font-weight: bold;
+
+}
+
+nav ul{
+float: right;
+margin-right: 20px;
+
+}
+
+nav ul li{
+
+display: inline-block;
+line-height: 100px;
+margin: 0 5px;
+
+}
+
+
+nav ul li a{
+color: white;
+font-size: 17px;
+padding: 7px 13px;
+border-radius: 3px;
+text-transform: uppercase;
+}
+
+a.active, a:hover{
+background: lightblue;
+transition: .5s;
+}
+
+.checkbtn{
+font-size: 30px;
+color: white;
+float: right;
+line-height: 80px;
+margin-right: 40px;
+cursor: pointer;
+display: none;
+}
+
+#check{
+display:none;
+
+}
+
+@media (max-width: 952px){
+label.logo{
+  font-size: 30:px;
+  padding-left: 50px;
+}
+
+}
+ 
+@media (max-width: 858px){
+
+  .checkbtn{
+    display: block;
+  }
+
+  ul{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #2c3e50;
+    top: 80px;
+    left: -100%;
+    text-align: center;
+    transition: all .5s;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+
+  nav ul li a{
+    font-size: 20px;
+  }
+
+
+  #check:checked ~ ul {
+    left: 0;
+
+  }
+}
+
+.index_section{
+  background: url(John-Cena.jpg) no-repeat;
+  height: 100%;
+  background-size: cover;
+  margin: auto;
+
+  }
+.our_team_section{
+  background: url(One.jpg) no-repeat;
+  background-size: cover;
+  height: calc(100vh - 80px);
+  margin: auto;
+}
+
+  div.content{
+
+   background: rgba(0, 130, 230, 0.4); /* Green background with 30% opacity */
+    height: 330px;
+    width: 280px;
+    border: 5px transparent #000000;
+    float: left;
+    margin: 40px;
+    border-radius: 20px;
+    text-align: center;
+    color: #e9ebe1;
+
+  }
+
+.container{
+
+  display: flex;
+  justify-content: center;
+}
+
+
+/* Set a specific color for each brand *//* Facebook */
+/*
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+  /* Add a hover effect if you want */
+.
+/* Twitter 
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+fa:hover {
+  opacity: 0.5;
+}
+*/
+/*Container*/
+#container {
+    width: inherit;
+    height: inherit;
+    margin: 0;
+    padding: 0;
+    background-color: pink;
+}
+
+div.inside {
+ width: 25%;
+ float:left;
+ margin: auto;
+ margin-right: 50px;
+ background-color: lightgray;
+ box-sizing:border-box;
+ -moz-box-sizing:border-box; /* Firefox */
+ -webkit-box-sizing:border-box; /* Safari */
+
+}
+
+.outer {
+ width:100%;
+ background:#999;
+ overflow:auto;
+}
+
+.inside {
+ 
+ width:24%;
+ margin-right:1%;
+ background:#333
+}
+.card{
+  width: 18rem;
+  margin: 20px;
+  padding: 20px;
+
+}
+
+
+/* My work */
+.line{
+	height: 1px;
+	background-color: lightgray;
+}
+
+/*Form*/
+#create_service_header{
+	padding-left: 39%;
+}
+#create_service_form{
+	padding-left: 25%;
+	font-weight: bold;
+}
+#create_form{
+	padding-left: 30%; 
+	padding-top:3%;
+}
+#create_button_div{
+	padding-left: 20%;
+	padding-top: 3%;
+}
+button {
+  border-radius: 4px;
+  background-color: #098fe3;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  
+  width: 120px;
+  height: 38px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+button:hover span {
+  padding-right: 25px;
+}
+
+button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+}
+

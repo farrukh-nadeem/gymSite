@@ -1,0 +1,67 @@
+{% extends "members/layout.html" %}
+{% if heading %}
+    {% block title %}About Us{% endblock %}
+{% endif %}
+
+{% block body %}
+    <style>
+  .jumbotron {
+    background-color: #4acfb9;
+    color: #fff;
+    padding: 100px 25px;
+  }
+  .container-fluid {
+    padding: 60px 50px;
+  }
+  .bg-grey {
+    background-color: #f6f6f6;
+  }
+  .logo {
+    font-size: 200px;
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Lean Clan</h1> 
+  <p>We specialize in blablabla</p> 
+</div>
+
+<!-- Container (About Section) -->
+
+<div class="container-fluid bg-grey">
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-globe logo"></span>
+    </div>
+    <div class="col-sm-8">
+      <h2>Our Values</h2>
+      <h4><strong>MISSION:</strong> Our mission lorem ipsum..</h4>      
+      <p><strong>VISION:</strong> Our vision Lorem ipsum..</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>Contact Us</h2>
+      <h4>Email: leanclan@example.com</h4>      
+      <p>Phone Number: +92 300 1000</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-signal logo"></span>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

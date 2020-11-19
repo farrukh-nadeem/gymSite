@@ -1,0 +1,53 @@
+{% extends "members/layout.html" %}
+{% block title %}Register{% endblock %}
+{% block body %}
+
+    <h2>Register</h2>
+
+    {% if message %}
+        <div style="text-align: center;">{{ message }}</div>
+    {% endif %}
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="email" name="email" placeholder="Email Address">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+        </div>
+        <div class="form-group">
+            <label>Date of birth</label>
+            <input class="form-control" type="date" name="dob" placeholder="Date of Birth">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" name="fullname" placeholder="Full Name">
+        </div>
+        <div class="form-group">
+            <select name="gender" class="form-control">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select name="type" class="form-control">
+                <option value="Member">Member</option>
+                <option value="Trainer">Trainer</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" autofocus name="description" placeholder="Tell us something about yourself"></textarea> 
+        </div>
+        <input class="btn btn-primary" type="submit" value="Register">
+    </form>
+
+    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+
+{% endblock %}

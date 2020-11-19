@@ -1,0 +1,47 @@
+{% extends "members/layout.html" %}
+{% if heading %}
+    {% block title %}Confirm Booking{% endblock %}
+{% endif %}
+
+{% block body %}
+
+{% if message %}
+	Alert: {{message}}
+{% endif %}
+	<div class="card" style="margin-left: 40%; width: 30%; text-align: center; font-size: 20px;">
+		<h2>{{service.excercise_field.exercise_name}}</h2>
+		<h4>({{service.type_field.service_name}})</h4></br>
+				<h6 class="card-subtitle mb-2 text-muted">By {{service.service_provider_field.fullname}}</h6>
+				<p> 
+					{% if service.is_online %}
+						<b>Mode: </b> Online <br>
+					{% elif service.is_online == False %}
+						<b>Mode: </b> On Site <br>
+					{% endif %}
+					{% if service.is_oneToOne == True %}
+						<b>Session Type:</b> One to One </br>
+					{% elif service.is_oneToOne == False %}
+						<b>Session Type:</b> Group </br>
+					{% endif %}
+					{% if service.days %}
+						<b>On:</b> {{service.days}}</br>
+					{% endif %}
+					{% if service.timings %}
+						<b>Timing:</b> {{service.timings}}</br>
+					{% endif %}
+					{% if service.duration %}
+						<b>Duration:</b> {{service.duration}} mins/session </br>
+					{% endif %}
+					<b>Charges:</b> {{service.charges}}</br>
+					{% if service.class_link %}
+						<b>Link: </b><a href="{{service.class_link}}" target="_blank">{{service.class_link}}</a>
+					{% endif %}
+				</p>
+	</div>
+	<div style="margin-left: 40%">
+		
+		<button onclick="history.back()">Go Back!</button>
+		<a href="{% url 'enroll' service.id %}"><button id="confirm_booking">Confirm Booking</button></a>
+	</div>
+
+{% endblock %}

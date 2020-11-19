@@ -1,0 +1,46 @@
+{% extends "members/layout.html" %}
+{% load static %}
+{% if heading %}
+    {% block title %}Lean Clan{% endblock %}   
+{% endif %}
+{% block body %}
+	{% if message%}
+		<div style="text-align: center;" class="alert alert-success" role="alert">
+			{{message}}
+		</div>
+	{% endif %}
+    <section class="index_section">
+    	<div>
+			<h2 style="color: white; padding-left: 40%; padding-top: 3%;">Our Services</h2>
+		</div>
+		<div class=container>
+		<div class="content" id="First">
+
+		  <h4> Class Sessions </h4>
+		<p> <br> <br> Our fitness instructors are now hosting live sessions on Zoom to keep you fit no matter where you're located amid global pandemic. </p>
+		</div>
+
+		<div class="content" id="Second">
+
+		  <h4> Diet Plans </h4>
+
+		  <p> <br> <br> Access our diet plans provided by some of the most qualified fitness instructors. </p>
+
+
+		</div>
+
+		<div class="content" id="Third">
+
+		  <h4> VOD </h4>
+
+		  <p> <br> <br> Buy our video on-demand packages at very reasonable prices.</p>
+
+
+		</div>
+		</div>
+
+
+
+	</section>
+
+{% endblock %}

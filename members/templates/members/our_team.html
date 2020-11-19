@@ -1,0 +1,28 @@
+{% extends "members/layout.html" %}
+{% if heading %}
+    {% block title %}Our Team{% endblock %}
+{% endif %}
+
+{% block body %}
+  <section class="our_team_section">
+    <div><h2 style="padding-left: 40%; color: white;">Our Trainers</h2></div><br>
+    <div class="container">
+        <div style="width:100%; height: 200px;">
+    	{% for trainer in trainers %}
+    		            <div class="inside">
+               <div class="card" style="width: 18rem; margin: 20px;">
+                 <div class="card-body">
+                   <h3 class="card-title">{{trainer.fullname}}</h3>
+                   <h5 class="card-title">DOB:{{trainer.dob}}</h5>
+                   <h6 class="card-subtitle mb-2 text-muted">{{trainer.gender}}</h6>
+                   <p class="card-text"> 
+                    {{trainer.description}}
+                   </p>
+                 </div>
+               </div>
+            </div>
+    	{% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

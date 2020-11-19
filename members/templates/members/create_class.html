@@ -1,0 +1,98 @@
+{% extends "members/layout_trainers.html" %}
+{% if heading %}
+    {% block title %}Create a Service{% endblock %}
+{% endif %}
+
+{% block body %}
+	<div id="create_service_header">
+		<h2>Create Your Class</h2>
+	</div>
+	<div class="form-group" id ="create_form">
+		<form action="{% url 'create_class' %}" method="post">
+			{% csrf_token %}
+			<div class="form-group">
+				<div class="row">
+				    <div class="form-group col-md-6">
+				    	<label class="mr-sm-2" for="serviceType">Service Type</label>
+						  <select class="custom-select mr-sm-2" name="serviceType" id="serviceType" required>
+						    <option value="1">On demand Video</option>
+						    <option value="2">Diet Plan</option>
+						    <option value="3">Class Session</option>
+						  </select>
+				    </div>
+				</div>
+				<div class="row" id="sessionType&place">
+					<div class="col-md-3">
+				    	<label class="mr-sm-2" for="online">Online Or Offline</label>
+						  <select class="custom-select mr-sm-2" name="check_online" id="check_online">
+						    <option selected value="0">Choose...</option>
+						    <option value="1">Online</option>
+						    <option value="2">On Site</option>
+						  </select>
+					</div>
+					<div class="col-md-3">
+				    	<label class="mr-sm-2" for="online">Session Type</label>
+						  <select class="custom-select mr-sm-2" name="check_group" id="check_group">
+						    <option selected value="0">Choose...</option>
+						    <option value="1">One To One</option>
+						    <option value="2">Group</option>
+						  </select>
+					</div>
+				</div>
+				</br>
+				<div class="row" id="days&Time">
+					<div class="col-md-3" id="create_days">
+				    	<label class="mr-sm-2" for="online">Days</label>
+						  <select class="custom-select mr-sm-2" name="days" id="days">
+						    <option selected value="">Choose...</option>
+						    <option value="Weekdays">Regular Weekdays</option>
+						    <option value="Alternate Days">Alternate Days on Weekdays</option>
+						    <option value="Weekends">Weekends</option>
+						  </select>
+					</div>
+					<div class="col-md-3" id="create_timing">
+				    	<label class="mr-sm-2" for="online">Timing</label>
+						  <select class="custom-select mr-sm-2" name="timing" id="timing">
+						    <option selected value="">Choose...</option>
+						    <option value="8am">8am</option>
+						    <option value="5pm">5pm</option>
+						    <option value="8pm">8pm</option>
+						  </select>
+					</div>
+				</div></br>
+				<div class="row">
+					<div class="col-md-3" id="create_exercise">
+				    	<label class="mr-sm-2" for="exercise">Exercise/Diet</label>
+						  <select class="custom-select mr-sm-2" name="exercise" id="exercise">
+						    <option selected value="">Choose...</option>
+						    {% for ex in exercises %}
+						    	<option value="{{ex.exercise_name}}">{{ex.exercise_name}}</option>
+						    {% endfor %}
+						  </select>
+					</div>
+					<div class="col-md-3" id="create_link">
+					  <label for="link">Class Link</label>
+					  	<input type="text" class="form-control" name="link" id="link" placeholder="URL Link of here">
+					</div>
+				</div></br>
+				<div class="row" id="create_duration">
+					<div class="col-md-6">
+					  <label for="duration">Duration</label>
+					  	<input type="number" class="form-control" name="duration" id="duration" placeholder="Duration of the class in minutes" min="0" max="1000">
+					</div>
+				</div></br>
+				<div class="row">
+					<div class="col-md-6" id="create_charges">
+					  <label for="charges">Charges</label>
+					  	<input type="number" class="form-control" name="charges" id="charges" placeholder="Charges of the Class in Rupees" required>
+					</div>
+				</div>
+				<div id="create_button_div">
+					<input style="width: 100px;" class="btn btn-primary" type="submit" value="Create" id="create_button">
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+{% endblock %}

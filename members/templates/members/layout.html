@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Gym{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Boostrap  -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!--CSS -->
+        <link href="{% static 'members/style.css' %}" rel="stylesheet">
+        <!-- external JavaScript-->
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script><script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <!--External CSS -->
+        <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+        {% block script %}
+        {% endblock %}
+    </head>
+    <body>
+    <nav>
+        <input type="checkbox" id="check" >
+
+        <label for="check" class="checkbtn">
+
+        <i class="fas fa-bars"></i>
+
+        </label>
+        <a href="{% url 'index' %}"><label class = "logo"> LEAN CLAN </label></a>
+
+        <ul>
+
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'booking' %}">Search Services</a></li>
+        <li><a href="{% url 'about_us' %}">About Us</a></li>
+        <li><a href="{% url 'our_team' %}">Our Team</a></li>
+        {% if user.is_authenticated %}
+
+            <li><a href="{% url 'your_classes' %}">Your DashBoard</a></li>
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Log In/Register</a></li>
+        {% endif %}
+        </ul>
+
+    </nav>
+        <hr>
+        {% block body %}
+        {% endblock %}
+    </body>
+    <!--<footer>
+        <div>
+         Add font awesome icons
+            <a href="#" class="fa fa-facebook"></a><a href="#" class="fa fa-twitter"></a>
+        </div>
+        <div>
+            <p> This is the footer of the page </p>
+        </div>
+    </footer>-->
+</html>

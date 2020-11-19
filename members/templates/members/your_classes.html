@@ -1,0 +1,58 @@
+{% extends "members/layout.html" %}
+{% if heading %}
+    {% block title %}Your Classes{% endblock %}
+{% endif %}
+
+{% block body %}
+	{% if message%}
+		<div style="padding-left: 40%;" class="alert alert-info" role="alert">
+			{{message}}
+		</div>
+	{% endif %}
+    <i>DashBoard</i><h2 style="margin-left: 35%;">The services you are enrolled in</h2>
+    <hr>
+    <div class="container">
+    {% for book in bookings %}
+			<div class="card">
+				{{book.time_of_booking}}<br>
+				<h2>{{book.service_field.excercise_field.exercise_name}}</h2>
+		<h4>({{book.service_field.type_field.service_name}})</h4></br>
+				<h6 class="card-subtitle mb-2 text-muted">By {{book.service_field.service_provider_field.fullname}}</h6>
+				<p> 
+					{% if book.service_field.is_online %}
+						<b>Mode: </b> Online <br>
+					{% elif book.service_field.is_online == False %}
+						<b>Mode: </b> On Site <br>
+					{% endif %}
+					{% if book.service_field.is_oneToOne == True %}
+						<b>Session Type:</b> One to One <br>
+					{% elif book.service_field.is_oneToOne == False %}
+						<b>Session Type:</b> Group <br>
+					{% endif %}
+					{% if book.service_field.days %}
+						<b>On:</b> {{book.service_field.days}}<br>
+					{% endif %}
+					{% if book.service_field.timings %}
+						<b>Timing:</b> {{book.service_field.timings}}<br>
+					{% endif %}
+					{% if book.service_field.duration %}
+						<b>Duration:</b> {{book.service_field.duration}} mins/session <br>
+						{% if book.service_field.class_link %}
+							<b>Link: </b><a href="{{book.service_field.class_link}}" target="_blank">{{book.service_field.class_link}}</a>
+						{% endif %}
+					{% endif %}
+				</p>
+				<div>
+					<a href="{% url 'cancel_class' book.service_field.id %}"><button>Cancel This</button></a>
+				</div>
+			</div>
+			{% empty %}
+	    	<i>"Sorry You are not availing any services"</i>
+    {% endfor %}
+	</div>
+    <hr>
+    <div style="text-align: center;">
+    	<button onclick="history.back()">Go Back!</button>
+
+    </div>
+{% endblock %}
